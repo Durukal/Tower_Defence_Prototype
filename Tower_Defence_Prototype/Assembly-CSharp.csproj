@@ -50,6 +50,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyAnimations.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHealthContainer.cs" />
+     <Compile Include="Assets\Scripts\Extras\ObjectPooler.cs" />
+     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\Spawner\Spawner.cs" />
      <Compile Include="Assets\Scripts\Waypoint\Waypoint.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Repos/Tower_Defence_Prototype/Tower_Defence_Prototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
