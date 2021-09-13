@@ -27,6 +27,7 @@ public class MachineTurretProjectiles : TurretProjectile {
 
         MachineProjectile projectile = instance.GetComponent<MachineProjectile>();
         projectile.Direction = direction;
+        projectile.Damage = Damage;
 
         if (isDualMachine) {
             float randomSpread = Random.Range(-spreadRange, spreadRange);

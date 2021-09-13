@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Extras\DamageText.cs" />
      <Compile Include="Assets\Scripts\Extras\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\Extras\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Managers\CurrencySystem.cs" />
      <Compile Include="Assets\Scripts\Managers\DamageTextManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Projectiles\MachineProjectile.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Scripts\Turrets\MachineTurretProjectiles.cs" />
      <Compile Include="Assets\Scripts\Turrets\Turret.cs" />
      <Compile Include="Assets\Scripts\Turrets\TurretProjectile.cs" />
+     <Compile Include="Assets\Scripts\Turrets\TurretUpgrade.cs" />
      <Compile Include="Assets\Scripts\Waypoint\Waypoint.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

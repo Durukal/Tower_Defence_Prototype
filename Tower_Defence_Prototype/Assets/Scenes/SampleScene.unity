@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 400101135}
   - component: {fileID: 400101134}
   - component: {fileID: 400101133}
+  - component: {fileID: 400101138}
   m_Layer: 0
   m_Name: Multi_machine_turret
   m_TagString: Untagged
@@ -298,6 +299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 14411872}
   delayBtwAttacks: 0.2
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
   isDualMachine: 1
   spreadRange: 15
 --- !u!58 &400101134
@@ -357,8 +361,24 @@ Transform:
   - {fileID: 1064424796}
   - {fileID: 376711326}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400101138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400101132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &505451346
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,13 +556,14 @@ GameObject:
   - component: {fileID: 551163983}
   - component: {fileID: 551163981}
   - component: {fileID: 551163980}
+  - component: {fileID: 551163985}
   m_Layer: 0
   m_Name: One_missile_turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!58 &551163980
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -586,7 +607,7 @@ Transform:
   - {fileID: 1305380991}
   - {fileID: 1638423554}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &551163983
 MonoBehaviour:
@@ -616,6 +637,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1748145023}
   delayBtwAttacks: 2
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
+--- !u!114 &551163985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551163979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 10
+  upgradeCostIncremental: 20
+  damageIncremental: 5
+  delayReduce: 0.2
 --- !u!1 &672828498
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +739,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3541364624106293842, guid: 750d3602d4900254ebeb7454bf941970, type: 3}
   poolSize: 20
+--- !u!1 &727277210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727277212}
+  - component: {fileID: 727277211}
+  m_Layer: 0
+  m_Name: CurrencyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &727277211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727277210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70083264a22d5340b75bd4630a5c1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinTest: 500
+--- !u!4 &727277212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727277210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734763027
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +960,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909925102
 GameObject:
@@ -923,6 +1007,7 @@ GameObject:
   - component: {fileID: 948666881}
   - component: {fileID: 948666880}
   - component: {fileID: 948666879}
+  - component: {fileID: 948666884}
   m_Layer: 0
   m_Name: Two_missile_turret
   m_TagString: Untagged
@@ -987,6 +1072,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1021875151}
   delayBtwAttacks: 2
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
 --- !u!4 &948666883
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,8 +1089,24 @@ Transform:
   - {fileID: 1603850094}
   - {fileID: 992091398}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &948666884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948666878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &992091397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1292,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064424795
 GameObject:
@@ -1284,13 +1388,14 @@ GameObject:
   - component: {fileID: 1133623828}
   - component: {fileID: 1133623827}
   - component: {fileID: 1133623826}
+  - component: {fileID: 1133623831}
   m_Layer: 0
   m_Name: Single_machine_turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1133623826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,6 +1410,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1935373101}
   delayBtwAttacks: 0.2
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
   isDualMachine: 0
   spreadRange: 0
 --- !u!58 &1133623827
@@ -1364,8 +1472,24 @@ Transform:
   - {fileID: 1184706376}
   - {fileID: 734763028}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1133623831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133623825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1184706375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305380990
 GameObject:
@@ -1629,6 +1753,7 @@ GameObject:
   - component: {fileID: 1415562114}
   - component: {fileID: 1415562113}
   - component: {fileID: 1415562112}
+  - component: {fileID: 1415562117}
   m_Layer: 0
   m_Name: Ultra_missile_turret
   m_TagString: Untagged
@@ -1693,6 +1818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1359793102}
   delayBtwAttacks: 2
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
 --- !u!4 &1415562116
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,8 +1835,24 @@ Transform:
   - {fileID: 148725299}
   - {fileID: 909925103}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415562117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415562111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1603850093
 GameObject:
   m_ObjectHideFlags: 0

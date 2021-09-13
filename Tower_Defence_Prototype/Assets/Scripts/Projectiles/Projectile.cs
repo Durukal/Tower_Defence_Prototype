@@ -8,19 +8,12 @@ public class Projectile : MonoBehaviour {
     public static Action<Enemy, float> OnEnemyHit;
     
     [SerializeField] protected float moveSpeed = 10f;
-    [SerializeField] private float minDamage = 10f;
-    [SerializeField] private float maxDamage = 50f;
-    [SerializeField] protected float damage;
     [SerializeField] private float minDistanceToDealDamage = 0.1f;
-
+    public float Damage { get; set; }
     public TurretProjectile TurretOwner { get; set; }
 
     protected Enemy _enemyTarget;
-
-    private void Start() {
-        damage = Random.Range(minDamage, maxDamage);
-        damage = (float)Math.Round(damage);
-    }
+    
 
     protected virtual void Update() {
         if (_enemyTarget != null) {
@@ -33,8 +26,8 @@ public class Projectile : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, _enemyTarget.transform.position, moveSpeed * Time.deltaTime);
         float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
         if (distanceToTarget < minDistanceToDealDamage) {
-            OnEnemyHit?.Invoke(_enemyTarget,damage);
-            _enemyTarget.EnemyHealth.DealDamage(damage);
+            OnEnemyHit?.Invoke(_enemyTarget,Damage);
+            _enemyTarget.EnemyHealth.DealDamage(Damage);
             TurretOwner.ResetTurretProjectile();
             ObjectPooler.ReturnToPool(gameObject);
         }
