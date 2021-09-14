@@ -6,6 +6,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
     [SerializeField]private float attackRange = 3f;
     public Enemy CurrentEnemyTarget { get; set; }
+    public TurretUpgrade TurretUpgrade { get; set; }
+    public float AttackRange => attackRange;
 
     private bool _gameStarted;
     private List<Enemy> _enemies;
@@ -13,6 +15,8 @@ public class Turret : MonoBehaviour {
     private void Start() {
         _gameStarted = true;
         _enemies = new List<Enemy>();
+
+        TurretUpgrade = GetComponent<TurretUpgrade>();
     }
 
     private void Update() {

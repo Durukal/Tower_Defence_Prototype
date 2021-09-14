@@ -10,10 +10,12 @@ public enum SpawnModes {
 }
 
 public class Spawner : MonoBehaviour {
+    public static Action OnWaveCompleted;
+    
     [Header("Settings")]
     [SerializeField] private SpawnModes spawnMode = SpawnModes.Fixed;
     [SerializeField] private int enemyCount;
-    [SerializeField] private float delayBtwWaves = 1f;
+    [SerializeField] private float delayBtwWaves;
 
 
     [Header("Fixed Delay")]
@@ -23,15 +25,18 @@ public class Spawner : MonoBehaviour {
     [SerializeField] private float minRandomDelay;
     [SerializeField] private float maxRandomDelay;
 
+    [Header("Poolers")]
+    [SerializeField] private ObjectPooler enemyWave10Pooler;
+    [SerializeField] private ObjectPooler enemyWave11To20Pooler;
+    [SerializeField] private ObjectPooler enemyWave21To30Pooler;
+
     private float _spawnTimer;
     private int _enemiesSpawned;
     private int _enemiesRemaning;
     
-    private ObjectPooler _pooler;
     private Waypoint _waypoint;
 
     private void Start() {
-        _pooler = GetComponent<ObjectPooler>();
         _waypoint = GetComponent<Waypoint>();
         
         _enemiesRemaning = enemyCount;
@@ -49,12 +54,12 @@ public class Spawner : MonoBehaviour {
     }
 
     private void SpawnEnemy() {
-        GameObject newInstance = _pooler.GetInstanceFromPool();
+        GameObject newInstance = GetPooler().GetInstanceFromPool();
         Enemy enemy = newInstance.GetComponent<Enemy>();
         enemy.Waypoint = _waypoint;
-        enemy.ResetEnemy();
-        
+
         enemy.transform.localPosition = transform.position;
+        enemy.ResetEnemy();
         newInstance.SetActive(true);
     }
 
@@ -74,9 +79,25 @@ public class Spawner : MonoBehaviour {
         return randomTimer;
     }
 
+    private ObjectPooler GetPooler() {
+        int currentWave = LevelManager.Instance.CurrentWave;
+        if (currentWave <= 10) {
+            return enemyWave10Pooler;
+        }
+
+        if (currentWave > 10 && currentWave <= 20) {
+            return enemyWave11To20Pooler;
+        }
+
+        if (currentWave > 20 && currentWave <= 30) {
+            return enemyWave21To30Pooler;
+        }
+
+        return null;
+    }
     private IEnumerator NextWave() {
         yield return new WaitForSeconds(delayBtwWaves);
-        _enemiesRemaning = enemyCount;
+        _enemiesRemaning = (int)Random.Range(1f , enemyCount);
         _spawnTimer = 0f;
         _enemiesSpawned = 0;
     }
@@ -84,9 +105,11 @@ public class Spawner : MonoBehaviour {
     private void RecordEnemy(Enemy enemy) {
         _enemiesRemaning--;
         if (_enemiesRemaning <= 0) {
+            OnWaveCompleted?.Invoke();
             StartCoroutine(NextWave());
         }
     }
+
     private void OnEnable() {
         Enemy.OnEndReached += RecordEnemy;
         EnemyHealth.OnEnemyKilled += RecordEnemy;

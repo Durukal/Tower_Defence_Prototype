@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e0629769bb8c946b77be96034627d4, type: 3}
+  m_Name: Two_missile_turret 2
+  m_EditorClassIdentifier: 
+  TurretPrefab: {fileID: 6095993296824280830, guid: 6b4f3b5d9ebddc84e9180d7e5729a97f,
+    type: 3}
+  TurretShopCost: 15
+  TurretShopSprite: {fileID: 21300000, guid: 403d96316dccc7049b87841aa22445c8, type: 3}

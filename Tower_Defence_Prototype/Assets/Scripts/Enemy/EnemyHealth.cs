@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour {
     [SerializeField]private float initialHealth = 100f;
     [SerializeField]private float maxHealth = 100f;
 
+    public int killCount { get; set; }
     public float CurrentHealth { get; set; }
     
     private Image _healthBar;
@@ -59,6 +60,9 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     private void Die() {
+        UIManager.Instance.UpdateKillCountText();
         OnEnemyKilled?.Invoke(_enemy);
     }
+
+    
 }

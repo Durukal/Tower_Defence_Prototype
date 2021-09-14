@@ -31,11 +31,13 @@ public class Enemy : MonoBehaviour {
 
     private EnemyHealth _enemyHealth;
     private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer { get; set; }
 
     private void Start() {
         _enemyHealth = GetComponent<EnemyHealth>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         EnemyHealth = _enemyHealth;
+        SpriteRenderer = _spriteRenderer;
 
         _currentWaypointIndex = 0;
         MoveSpeed = moveSpeed;
@@ -65,9 +67,9 @@ public class Enemy : MonoBehaviour {
 
     private void Rotate() {
         if (CurrentPointPosition.x > _lastPointPosition.x) {
-            _spriteRenderer.flipX = false;
+            SpriteRenderer.flipX = false;
         } else {
-            _spriteRenderer.flipX = true;
+            SpriteRenderer.flipX = true;
         }
     }
 
@@ -97,6 +99,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void ResetEnemy() {
+        _lastPointPosition = transform.localPosition;
         _currentWaypointIndex = 0;
     }
 }

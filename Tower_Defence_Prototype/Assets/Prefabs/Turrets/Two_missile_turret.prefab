@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f5015bc1a15534bb03209d2d3ea788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5.73
+  attackRange: 2.5
 --- !u!114 &6095993296824280324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,10 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeInitialCost: 0
-  upgradeCostIncremental: 0
-  damageIncremental: 0
-  delayReduce: 0
+  upgradeInitialCost: 15
+  upgradeCostIncremental: 25
+  damageIncremental: 10
+  delayReduce: 0.2
+  sellPercentage: 0.5
 --- !u!58 &6095993296824280831
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1701060237
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 403d96316dccc7049b87841aa22445c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -324,7 +325,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1701060237
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4804495a2f088140969f82964f2d0a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

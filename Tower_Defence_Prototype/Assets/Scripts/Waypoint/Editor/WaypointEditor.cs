@@ -27,7 +27,7 @@ public class WaypointEditor : Editor {
             Vector3 textAlignment = Vector3.down * 0.5f + Vector3.right * 0.5f;
             Handles.Label(Waypoint.CurrentPosition + Waypoint.Points[index] + textAlignment, $"{index + 1}", textStyle);
 
-            EditorGUI.EndChangeCheck();
+            //EditorGUI.EndChangeCheck();
 
             if (EditorGUI.EndChangeCheck()) {
                 Undo.RecordObject(target, "Free Move Handle");

@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1701060237
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4804495a2f088140969f82964f2d0a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -211,7 +211,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1701060237
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8158c3cf34a704f459b8dccd0faad139, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f5015bc1a15534bb03209d2d3ea788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5.73
+  attackRange: 3.5
 --- !u!114 &55694726370538400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +320,8 @@ MonoBehaviour:
   upgradeInitialCost: 10
   upgradeCostIncremental: 20
   damageIncremental: 5
-  delayReduce: 0.2
+  delayReduce: 0.1
+  sellPercentage: 0.5
 --- !u!58 &55694726370538429
 CircleCollider2D:
   m_ObjectHideFlags: 0
