@@ -28,11 +28,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.B)) {
-            DealDamage(50f);
-        }
-
-        _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, CurrentHealth / maxHealth, Time.deltaTime * 10f);
+        _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, CurrentHealth / maxHealth, Time.deltaTime * 5f);
     }
 
     private void CreateHealthBar() {
@@ -60,6 +56,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     private void Die() {
+        _enemy.IsDead = true;
         UIManager.Instance.UpdateKillCountText();
         OnEnemyKilled?.Invoke(_enemy);
     }

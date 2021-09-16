@@ -9,6 +9,7 @@ public class LevelManager : Singleton<LevelManager> {
 
     public int TotalHealth { get; set; }
     public int CurrentWave { get; set; }
+    public bool IsGameOver = false;
 
     private void Start() {
         TotalHealth = health;
@@ -19,19 +20,22 @@ public class LevelManager : Singleton<LevelManager> {
         TotalHealth--;
         if (TotalHealth <= 0) {
             TotalHealth = 0;
-            GameOver();
+            StartCoroutine(GameOver());
         }
     }
 
-    private void GameOver() {
-        Time.timeScale = 0;
+    private IEnumerator GameOver() {
+        IsGameOver = true;
+        yield return new WaitForSeconds(3f);
         UIManager.Instance.ShowGameOverPanel();
+        Time.timeScale = 0;
     }
 
     private void WaveCompleted() {
         CurrentWave++;
-        if (CurrentWave >= 30) {
-            GameOver();
+        if (CurrentWave > 30) {
+            CurrentWave = 30;
+            StartCoroutine(GameOver());
         }
     }
 

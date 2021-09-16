@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretUpgrade : MonoBehaviour {
+    [Header("Upgrades")]
+    [SerializeField] private float attackRangeIncremental;
     [SerializeField] private int upgradeInitialCost;
     [SerializeField] private int upgradeCostIncremental;
     [SerializeField] private float damageIncremental;
@@ -18,9 +20,11 @@ public class TurretUpgrade : MonoBehaviour {
     public int Level { get; set; }
     
     private TurretProjectile _turretProjectile;
+    private Turret _turret;
 
     void Start() {
         _turretProjectile = GetComponent<TurretProjectile>();
+        _turret = GetComponent<Turret>();
         UpgradeCost = upgradeInitialCost;
 
         SellPerc = sellPercentage;
@@ -31,8 +35,9 @@ public class TurretUpgrade : MonoBehaviour {
         int sellValue = Mathf.RoundToInt(UpgradeCost * SellPerc);
         return sellValue;
     }
+
     public void UpgradeTurret() {
-        if (CurrencySystem.Instance.TotalCoins > UpgradeCost) {
+        if (CurrencySystem.Instance.TotalCoins >= UpgradeCost) {
             if (_turretProjectile.Damage <= 100f) {
                 _turretProjectile.Damage += damageIncremental;
             } else {
@@ -41,12 +46,22 @@ public class TurretUpgrade : MonoBehaviour {
         
             if (_turretProjectile.DelayPerShot >= 0f) {
                 _turretProjectile.DelayPerShot -= delayReduce;
-            } else {
-                _turretProjectile.DelayPerShot = 0f;
+                if (_turretProjectile.DelayPerShot <= 0f) {
+                    _turretProjectile.DelayPerShot = 0.1f;
+                }
+            }
+
+            if (_turret.AttackRange < 5f) {
+                UpdateAttackRange();
             }
             
             UpdateUpgrade();
         }
+    }
+
+    private void UpdateAttackRange() {
+        _turret.AttackRange += attackRangeIncremental;
+        _turret.GetComponent<CircleCollider2D>().radius = _turret.AttackRange;
     }
 
     private void UpdateUpgrade() {

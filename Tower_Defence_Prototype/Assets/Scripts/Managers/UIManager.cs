@@ -64,6 +64,7 @@ public class UIManager : Singleton<UIManager> {
         _currentNodeSelected = null;
         nodeUIPanel.SetActive(false);
     }
+
     private void ShowNodeUI() {
         nodeUIPanel.SetActive(true);
         UpdateUpgradeText();
@@ -74,6 +75,7 @@ public class UIManager : Singleton<UIManager> {
     private void UpdateUpgradeText() {
         upgradeText.text = _currentNodeSelected.Turret.TurretUpgrade.UpgradeCost.ToString();
     }
+
     public void UpdateKillCountText() {
         KillCount++;
         killCountText.text = $"Kills {KillCount}";
@@ -89,6 +91,10 @@ public class UIManager : Singleton<UIManager> {
     }
     
     private void NodeSelected(Node nodeSelected) {
+        if (_currentNodeSelected != null) {
+            _currentNodeSelected.CloseAttackRangeSprite();
+        }
+
         _currentNodeSelected = nodeSelected;
         if (_currentNodeSelected.IsEmpty()) {
             turretShopPanel.SetActive(true);

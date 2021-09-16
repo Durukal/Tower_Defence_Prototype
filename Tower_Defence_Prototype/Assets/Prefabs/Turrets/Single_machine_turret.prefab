@@ -109,9 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 7889065745764742446}
-  delayBtwAttacks: 0.2
-  minDamage: 10
-  maxDamage: 50
+  delayBtwAttacks: 0.5
+  minDamage: 20
+  maxDamage: 30
   damage: 0
   isDualMachine: 0
   spreadRange: 0
@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeIncremental: 0.2
   upgradeInitialCost: 25
   upgradeCostIncremental: 35
-  damageIncremental: 2
+  damageIncremental: 5
   delayReduce: 0.2
   sellPercentage: 0.5
 --- !u!58 &7889065745509301264

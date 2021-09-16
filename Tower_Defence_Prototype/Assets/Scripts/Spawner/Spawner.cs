@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour {
 
     private void Update() {
         _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer < 0) {
+        if (_spawnTimer <= 0 && !LevelManager.Instance.IsGameOver) {
             _spawnTimer = GetSpawnDelay();
             if (_enemiesSpawned < enemyCount) {
                 _enemiesSpawned++;
@@ -83,21 +83,18 @@ public class Spawner : MonoBehaviour {
         int currentWave = LevelManager.Instance.CurrentWave;
         if (currentWave <= 10) {
             return enemyWave10Pooler;
-        }
-
-        if (currentWave > 10 && currentWave <= 20) {
+        } else if (currentWave > 10 && currentWave <= 20) {
             return enemyWave11To20Pooler;
-        }
-
-        if (currentWave > 20 && currentWave <= 30) {
+        } else if (currentWave > 20 && currentWave <= 30) {
             return enemyWave21To30Pooler;
         }
 
         return null;
     }
+
     private IEnumerator NextWave() {
         yield return new WaitForSeconds(delayBtwWaves);
-        _enemiesRemaning = (int)Random.Range(1f , enemyCount);
+        _enemiesRemaning = enemyCount;
         _spawnTimer = 0f;
         _enemiesSpawned = 0;
     }
@@ -105,8 +102,8 @@ public class Spawner : MonoBehaviour {
     private void RecordEnemy(Enemy enemy) {
         _enemiesRemaning--;
         if (_enemiesRemaning <= 0) {
-            OnWaveCompleted?.Invoke();
             StartCoroutine(NextWave());
+            OnWaveCompleted?.Invoke();
         }
     }
 

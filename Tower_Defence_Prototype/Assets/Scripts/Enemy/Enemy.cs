@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour {
     private EnemyHealth _enemyHealth;
     private SpriteRenderer _spriteRenderer;
     public SpriteRenderer SpriteRenderer { get; set; }
+    public bool IsDead = false;
 
     private void Start() {
         _enemyHealth = GetComponent<EnemyHealth>();
@@ -99,6 +100,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void ResetEnemy() {
+        IsDead = false;
         _lastPointPosition = transform.localPosition;
         _currentWaypointIndex = 0;
     }

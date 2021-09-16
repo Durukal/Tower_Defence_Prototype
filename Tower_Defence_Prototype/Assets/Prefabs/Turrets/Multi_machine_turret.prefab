@@ -140,8 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 8939026067782039741}
   delayBtwAttacks: 0.2
-  minDamage: 10
-  maxDamage: 50
+  minDamage: 5
+  maxDamage: 10
   damage: 0
   isDualMachine: 1
   spreadRange: 15
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeIncremental: 0.2
   upgradeInitialCost: 30
   upgradeCostIncremental: 40
   damageIncremental: 1
@@ -177,7 +178,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.73
+  m_Radius: 3
 --- !u!1 &8939026068848821638
 GameObject:
   m_ObjectHideFlags: 0

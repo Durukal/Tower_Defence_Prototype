@@ -233,9 +233,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 55694726370538431}
-  - component: {fileID: 55694726370538401}
   - component: {fileID: 55694726370538430}
   - component: {fileID: 55694726370538428}
+  - component: {fileID: 55694726370538401}
   - component: {fileID: 55694726370538400}
   - component: {fileID: 55694726370538429}
   m_Layer: 0
@@ -261,23 +261,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &55694726370538401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55694726370538426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bdfade1425c3a143b98515a0708c396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawnPosition: {fileID: 55694725172508814}
-  delayBtwAttacks: 2
-  minDamage: 10
-  maxDamage: 50
-  damage: 0
 --- !u!114 &55694726370538430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +287,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f5015bc1a15534bb03209d2d3ea788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3.5
+  attackRange: 3
+--- !u!114 &55694726370538401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55694726370538426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdfade1425c3a143b98515a0708c396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPosition: {fileID: 55694725172508814}
+  delayBtwAttacks: 1
+  minDamage: 10
+  maxDamage: 50
+  damage: 0
 --- !u!114 &55694726370538400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6d4a2a1d0699444b90669d5ed2e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeIncremental: 0.2
   upgradeInitialCost: 10
   upgradeCostIncremental: 20
   damageIncremental: 5
@@ -337,4 +338,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.73
+  m_Radius: 3

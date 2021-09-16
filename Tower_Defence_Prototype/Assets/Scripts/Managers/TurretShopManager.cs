@@ -44,6 +44,7 @@ public class TurretShopManager : MonoBehaviour {
             
             Turret turretPlaced = turretInstance.GetComponent<Turret>();
             _currentNodeSelected.SetTurret(turretPlaced);
+            _currentNodeSelected.gameObject.tag = "Filled Node";
         }
     }
 
